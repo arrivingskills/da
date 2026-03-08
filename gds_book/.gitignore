@@ -1,0 +1,17 @@
+google_maps_key
+.DS_Store
+*/.DS_Store
+outlines/.ipy*
+.ipynb_ch*
+*.swp
+infrastructure/us.tif
+infrastructure/check_gds_stack.html
+html/*
+__pycache__
+pdf/*
+tmp_book/
+*/*/NASADEM_HGT*
+*/*/*.hgt
+notebooks/cache
+notebooks/auto
+tests/

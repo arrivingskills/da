@@ -1,0 +1,45 @@
+name: Test Book
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  Test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+            auto-update-conda: true
+            auto-activate-base: true
+
+      - name: Set up GDS Env
+        shell: bash -l {0}
+        run: |
+          conda update -y -n base -c defaults conda
+          conda --version
+          conda env create -f ../infrastructure/book_stack.yml 
+          conda activate gdsbook
+      - name: Check and Log Environment
+        shell: bash -l {0}
+        run: |
+          conda activate gdsbook
+          conda info
+          # Print conda list
+          conda list
+          
+      - name: Run Tests
+        shell: bash -l {0}
+        continue-on-error: false
+        run: |
+          conda activate gdsbook
+          make test

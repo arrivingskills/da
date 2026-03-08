@@ -1,0 +1,21 @@
+name: gdsbook
+channels: 
+  - conda-forge 
+dependencies: 
+  - cenpy
+  - contextily
+  - datashader
+  - geopandas
+  - ipython 
+  - mapclassify
+  - myst-nb
+  - nbconvert
+  - osmnx
+  - pandas
+  - pysal
+  - rasterio
+  - rioxarray
+  - scikit-learn
+  - seaborn
+  - shapely
+  - xarray
